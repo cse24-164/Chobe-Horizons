@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 *{
   box-sizing: border-box;
   margin: 0;
@@ -34,7 +38,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 4rem;
+  padding: 1.5rem 4rem;
   border-bottom: 1px solid #eee;
 }
 
@@ -225,6 +229,8 @@ nav a:visited {
   background-color: #0f3322; /* even darker when pressed */
   transform: translateY(0);
 }
+
+
    
 
 .investment-icons{
@@ -833,6 +839,27 @@ footer a {
 /* Ensure cards take the entire column width */
 .contact-cards .card {
   width: 100%;
+}
+
+/*Transitions*/
+
+.card, .opportunities-card, .project-card, .objectives-card {
+  transition: all 0.3s ease; /* property | duration | timing */
+}
+
+.card:hover, .opportunities-card:hover, .project-card:hover, .objectives-card:hover {
+  transform: scale(1.05); /* slightly enlarge */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* add shadow */
+}
+
+button {
+  background-color: #1f5c3f;
+  color: white;
+  transition: background-color 0.4s ease;
+}
+
+button:hover {
+  background-color: #2b7a54;
 }
 
 /* responsive: stack on small screens */
