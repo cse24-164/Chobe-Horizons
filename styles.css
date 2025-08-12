@@ -126,7 +126,6 @@ nav a:visited {
         margin: 0 auto;
         font-size: 1rem;
         line-height: 1.6;
-        color: #333;
     }
 
     .point-eval{
@@ -137,16 +136,40 @@ nav a:visited {
       font-size: 1.5rem;
       margin-bottom: 2rem;
     }
+    
     .section-icons {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-    .icon-box {
-      width: 200px;
-      margin: 1rem;
-    }
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.icon-box {
+  text-align: center;
+  max-width: 300px;
+  margin: 1rem;
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  background-color: #bae3cf; /* Green background */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px auto; /* Centers circle above text */
+}
+
+.icon-image {
+  width: 40%; /* Keep image smaller inside circle */
+  height: auto;
+  display: block;
+}
+
+.point-eval {
+  font-size: 1rem;
+}
     .about {
       display: flex;
       justify-content: space-between;
@@ -202,15 +225,19 @@ nav a:visited {
   background-color: #0f3322; /* even darker when pressed */
   transform: translateY(0);
 }
-    .investment-icons {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
+   
 
+.investment-icons{
+ width: 80px;                /* Size of the circle */
+    height: 80px;
+    background-color: #fff;  /* Same green */
+    border-radius: 50%;         /* Make it circular */
+    border: 2px solid #66ccaf; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px auto; 
+}
 
     .projects {
       background-color: white;
@@ -386,6 +413,39 @@ footer a {
   font-size: 0.8rem;
 }
 
+/* Back to top button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    width: 50px;
+    height: 40px;
+    background-color: #1f5c3f;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 24px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 99;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: #2c6f4a;
+    transform: translateY(-3px);
+}
+
+
 /* Social icons */
 .social-icons {
   margin-top: 1rem;
@@ -430,6 +490,20 @@ footer a {
       margin: 0 auto;
       text-align: center;
       margin-bottom: 2rem;
+    }
+
+    .opportunities a.button.secondary{
+      margin-left: 3rem;
+      margin-right: 3rem;
+      margin-bottom: 2rem;
+      padding: 0.7rem 1.5rem;
+      border: 1px solid #1f5c3f;
+      background: #fff;
+      color: #1f5c3f;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
     }
 
     /* Mission & Vision Section */
@@ -507,6 +581,23 @@ footer a {
 .stakeholder h4 {
   font-size: 1rem;
   margin-bottom: 0.5rem;
+}
+
+.stakeholders .investment-icons {
+    width: 80px;                /* Size of the circle */
+    height: 80px;
+    background-color: #1f5c3f;  /* Same green */
+    border-radius: 50%;         /* Make it circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px auto;   /* Center above text */
+}
+
+.investment-icons img {
+    width: 40%;                 /* Make sure icon fits inside */
+    height: auto;
+    display: block;
 }
 
 /*OPPORTUNITIES PAGE*/
