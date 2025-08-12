@@ -34,29 +34,37 @@
   <div class="container">
     <!-- Left: Form -->
     <div class="contact-form">
+      
       <h3>Send us a Message</h3>
       <p>Fill out the form below and we’ll get back to you within 24 hours.</p>
-      <form>
-        <label for="name">Name*</label>
-        <input type="text" id="name" placeholder="Your full name" required>
+      <form action="https://formsubmit.co/msmaipelo@gmail.com" method="POST">
+  
+  <!-- Optional redirect after submission -->
+  <input type="hidden" name="_next" value="https://yourwebsite.com/thank_you.html">
+  
+  <!-- Optional prevent spam bots -->
+  <input type="hidden" name="_captcha" value="false">
+  
+  <label for="name">Name*</label>
+  <input type="text" id="name" name="name" placeholder="Your full name" required>
 
-        <label for="email">Email*</label>
-        <input type="email" id="email" placeholder="Enter email address" required>
+  <label for="email">Email*</label>
+  <input type="email" id="email" name="email" placeholder="Enter email address" required>
 
-        <label for="interest">I am interested in…</label>
-        <select id="interest" required>
-          <option value="">Select your area of Interest</option>
-          <option>Investment partnerships</option>
-          <option>Technical expertise sharing</option>
-          <option>Community development programs</option>
-          <option>Capacity building initiatives</option>
-        </select>
+  <label for="interest">I am interested in…</label>
+  <select id="interest" name="interest" required>
+    <option value="">Select your area of Interest</option>
+    <option>Investment partnerships</option>
+    <option>Technical expertise sharing</option>
+    <option>Community development programs</option>
+    <option>Capacity building initiatives</option>
+  </select>
 
-        <label for="message">Message*</label>
-        <textarea id="message" placeholder="Tell us about your interest in working with Chobe Horizons" required></textarea>
+  <label for="message">Message*</label>
+  <textarea id="message" name="message" placeholder="Tell us about your interest" required></textarea>
 
-        <button type="submit">Send Message</button>
-      </form>
+  <button type="submit">Send Message</button>
+</form>
     </div>
 
     <!-- Right: Cards -->

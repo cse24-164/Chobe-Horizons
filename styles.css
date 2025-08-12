@@ -1,32 +1,31 @@
-* {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', Arial, sans-serif;
-    }
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+}
 
-    body {
-      color: #000;
-      line-height: 1.6;
-    }
+body {
+  color: #000;
+  line-height: 1.6;
+}
 
-    .page-container {
-        max-width: 1500px;      /* Optional: keeps the page from stretching too wide */
-        margin: 0 auto;         /* Centers the page */
-        padding-left: 2rem;     /* Add space to the left */
-        padding-right: 2rem;    /* Add space to the right */
-    }
+.page-container {
+  max-width: 1500px;      
+  margin: 0 auto;         /* Centers the page */
+  padding-left: 2rem;     
+  padding-right: 2rem;    
+}
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.7rem 4rem;
+  border-bottom: 1px solid #eee;
+}
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.7rem 4rem;
-      border-bottom: 1px solid #eee;
-    }
-
-    /* Make header sticky */
+/*Sticky Header*/
 header {
   position: sticky;
   top: 0;
@@ -50,7 +49,7 @@ nav a {
   transition: all 0.3s ease;
 }
 
-/* Hover effect */
+
 nav a:hover {
   color: #1f5c3f;
 }
@@ -64,10 +63,9 @@ nav a:focus::after {
   bottom: 0;
   height: 2px;
   width: 100%;
-  background-color: green;
+  background-color: #1f5c3f;
 }
 
-/* Optional: Selected or current page style (same as active) */
 nav a.active {
   font-weight: bold;
   color: #1f5c3f;
@@ -77,10 +75,11 @@ nav a.active {
 nav a:visited {
   color: #14442e; /* slightly darker green for visited */
 }
-    .hero {
-      text-align: center;
-      padding: 2rem 4rem;
-    }
+
+.hero {
+  text-align: center;
+  padding: 2rem 4rem;
+}
     .hero h1 {
       font-size: 2rem;
       font-weight: 700;
@@ -163,6 +162,10 @@ nav a:visited {
       margin-bottom: 1rem;
     }
 
+    .about p{
+      margin-left: -1rem;
+    }
+
     ul {
         list-style: none;
         padding-left: 0;
@@ -234,7 +237,7 @@ nav a:visited {
 }
 
 .card {
-  width: 400px;              /* slightly narrower */
+  width: 410px;              /* slightly narrower */
   background: white;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -251,25 +254,80 @@ nav a:visited {
 
     .project-cards {
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       flex-wrap: wrap;
       margin-top: 1.4rem;
     }
-    .project-card {
-      width: 300px;
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding-right: 2rem;
-      padding-left: 2rem;
-      margin: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+.project-card {
+  width: 410px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  margin: 1rem;
+  text-align: left;
     }
+
+    .project-card h4{
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .project-card p{
+      text-align: left;
+      margin-left: -1rem;
+    }
+
+
+
+    .project-label {
+     
+  top: 1rem;
+  left: 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  text-transform: capitalize;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Colors for each label */
+.project-label.planned {
+  background-color: #a3bffa; /* light blue */
+}
+
+.project-label.ongoing {
+  background-color: #8dd7a8; /* light green */
+}
+
+.project-label.annual {
+  background-color: #bda4ff; /* light purple */
+}
+
+/* Section heading and paragraph centering */
+.projects h1,
+.projects p {
+  text-align: center;
+}
+
+
+.projects .btn-primary:hover {
+  background-color: #2c6f4a;
+  color: white;
+}
 
 footer {
   background-color: #111;
   color: #ccc;
   padding: 3rem 5vw; /* Increased left/right padding */
+}
+
+footer p{
+  margin-left: -1rem;  
 }
 
 .footer-top {
@@ -380,7 +438,11 @@ footer a {
   flex-wrap: wrap;
   gap: 3rem;
   justify-content: space-between;
-  padding: 4rem 2rem;
+  padding: 4rem 4rem;
+}
+
+.mission-vision p{
+  margin-left: -1rem;
 }
 
 .mission, .vision {
@@ -412,6 +474,10 @@ footer a {
   text-align: left;
 }
 
+.objectives-card p{
+  margin-left: -1rem;
+}
+
 
 /* Stakeholders Section */
 .stakeholders-section {
@@ -428,6 +494,10 @@ footer a {
   
 }
 
+.stakeholders-section p{
+  margin-left: -1rem;
+}
+
 .stakeholder {
   flex: 1 1 250px;
   text-align: center;
@@ -442,7 +512,7 @@ footer a {
 /*OPPORTUNITIES PAGE*/
 
 .opportunities {
-  max-width: 1200px;
+  max-width: 1250px;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -477,6 +547,7 @@ footer a {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   display: flex;
+    flex-wrap: wrap;
   flex-direction: column;
 }
 
@@ -517,9 +588,17 @@ footer a {
       font-size: 2rem;
       font-weight: 700;
     }
-    .hero p {
-      margin: 1rem 0;
+
+    .cta p {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      margin-bottom: 2rem;
     }
+    
+    
+
+
     .cta button, .cta a.button {
       margin: 0.5rem;
       padding: 0.7rem 1.5rem;
@@ -624,6 +703,10 @@ footer a {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 0 1px #e0e0e0;
+}
+
+.contact-cards p{
+  margin-left: 0;
 }
 
 .card h4 {
