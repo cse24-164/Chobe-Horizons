@@ -32,4 +32,22 @@ navLinks.forEach(link => {
         });
     });
 
+    // Mobile menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuBtn = document.createElement('button');
+  mobileMenuBtn.className = 'mobile-menu-btn';
+  mobileMenuBtn.innerHTML = '☰';
+  
+  const nav = document.querySelector('nav');
+  const header = document.querySelector('header');
+  
+  // Insert the button before the nav in the header
+  if (nav && header) {
+    header.insertBefore(mobileMenuBtn, nav);
+    
+    mobileMenuBtn.addEventListener('click', function() {
+      nav.classList.toggle('active');
+    });
+  }
+});
  
