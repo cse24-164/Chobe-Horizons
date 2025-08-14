@@ -1,5 +1,65 @@
+/* Add smooth scrolling to the entire page */
 html {
   scroll-behavior: smooth;
+}
+
+/* Add transition effects for sections */
+section {
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* When section comes into view */
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add transition for cards and other elements */
+.card, .opportunities-card, .project-card, .objectives-card, .stakeholder {
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover, .opportunities-card:hover, .project-card:hover, 
+.objectives-card:hover, .stakeholder:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Page transition effects */
+body {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Navigation transitions */
+nav a {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+nav a:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+nav a:hover:after {
+  width: 100%;
 }
 
 *{
@@ -28,6 +88,78 @@ body {
   --desktop: 1024px;
 }
 
+/* Header Styles */
+.header-container {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+}
+
+/* Hide mobile button by default */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Desktop Navigation */
+nav {
+  display: flex;
+  gap: 1.5rem;
+  margin-left: auto; /* Pushes nav to right */
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block; /* Show hamburger */
+  }
+  
+  nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    padding: 2rem;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    transition: left 0.3s ease;
+    z-index: 100;
+  }
+  
+  nav.active {
+    left: 0;
+  }
+  
+  /* Add overlay when menu is open */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 99;
+    display: none;
+  }
+  
+  nav.active ~ .overlay {
+    display: block;
+  }
+}
+
 /* Base Mobile Styles */
 @media (max-width: 768px) {
   body {
@@ -44,21 +176,34 @@ body {
     flex-direction: column;
     padding: 1rem;
   }
-  
-  nav {
-    margin-top: 1rem;
-    width: 100%;
-  }
-  
-  nav a {
-    display: block;
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-    text-align: center;
-  }
 }
 
-/* Mobile Navigation */
+
+/* Consolidated Header Styles */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.logo {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  z-index: 1001; /* Ensures logo stays above mobile menu */
+}
+
+/* Mobile Menu Button */
 .mobile-menu-btn {
   display: none;
   background: none;
@@ -66,50 +211,17 @@ body {
   font-size: 1.5rem;
   cursor: pointer;
   color: #1f5c3f;
+  z-index: 1001;
+  padding: 0.5rem;
 }
 
-@media (max-width: 768px) {
-  .mobile-menu-btn {
-    display: block;
-  }
-  
-  nav {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  nav.active {
-    display: flex;
-  }
-  
-  header {
-    padding: 1rem;
-  }
-}
-
-header {
+/* Desktop Navigation */
+nav {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.7rem 4rem;
-  border-bottom: 1px solid #eee;
+  gap: 1.5rem;
+  margin-left: auto;
 }
 
-/*Sticky Header*/
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: #fff; /* Make sure it doesn't go transparent when sticky */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 4rem;
-  border-bottom: 1px solid #eee;
-}
-
-/* Nav link styles */
 nav a {
   margin-left: 1rem;
   text-decoration: none;
@@ -119,7 +231,6 @@ nav a {
   position: relative;
   transition: all 0.3s ease;
 }
-
 
 nav a:hover {
   color: #1f5c3f;
@@ -550,7 +661,7 @@ footer a {
 .hero2{
       text-align: center;
       padding: 2rem 4rem;
-      background-color: #54aa81;
+      background-color: #479176;
       color: white;
     }
     .hero2 h1 {
@@ -661,6 +772,7 @@ footer a {
     height: 80px;
     background-color: #1f5c3f;  /* Same green */
     border-radius: 50%;         /* Make it circular */
+    border-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -908,26 +1020,7 @@ footer a {
   width: 100%;
 }
 
-/*Transitions*/
 
-.card, .opportunities-card, .project-card, .objectives-card {
-  transition: all 0.3s ease; /* property | duration | timing */
-}
-
-.card:hover, .opportunities-card:hover, .project-card:hover, .objectives-card:hover {
-  transform: scale(1.05); /* slightly enlarge */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* add shadow */
-}
-
-button {
-  background-color: #1f5c3f;
-  color: white;
-  transition: background-color 0.4s ease;
-}
-
-button:hover {
-  background-color: #2b7a54;
-}
 
 /* Cards and Sections */
 @media (max-width: 768px) {

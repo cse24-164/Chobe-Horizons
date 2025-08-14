@@ -32,22 +32,55 @@ navLinks.forEach(link => {
         });
     });
 
-    // Mobile menu toggle
+// Mobile menu functionality
 document.addEventListener('DOMContentLoaded', function() {
-  const mobileMenuBtn = document.createElement('button');
-  mobileMenuBtn.className = 'mobile-menu-btn';
-  mobileMenuBtn.innerHTML = '☰';
-  
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const nav = document.querySelector('nav');
-  const header = document.querySelector('header');
   
-  // Insert the button before the nav in the header
-  if (nav && header) {
-    header.insertBefore(mobileMenuBtn, nav);
-    
-    mobileMenuBtn.addEventListener('click', function() {
-      nav.classList.toggle('active');
+  // Create overlay element
+  const overlay = document.createElement('div');
+  overlay.className = 'overlay';
+  document.body.appendChild(overlay);
+
+  // Toggle menu
+  mobileMenuBtn.addEventListener('click', function() {
+    nav.classList.toggle('active');
+    overlay.style.display = nav.classList.contains('active') ? 'block' : 'none';
+  });
+
+  // Close menu when clicking overlay
+  overlay.addEventListener('click', function() {
+    nav.classList.remove('active');
+    overlay.style.display = 'none';
+  });
+});
+
+// Add this to your existing functions.js file
+document.addEventListener('DOMContentLoaded', function() {
+  // Section transition observer
+  const sections = document.querySelectorAll('section');
+  
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
     });
-  }
+  }, observerOptions);
+  
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+
+  // Add slight delay to cards for staggered animation
+  const cards = document.querySelectorAll('.card, .opportunities-card, .project-card, .objectives-card, .stakeholder');
+  cards.forEach((card, index) => {
+    card.style.transitionDelay = `${index * 0.1}s`;
+  });
 });
  
