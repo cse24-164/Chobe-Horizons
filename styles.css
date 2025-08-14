@@ -102,16 +102,6 @@ body {
   font-size: 1.2rem;
 }
 
-/* Hide mobile button by default */
-.mobile-menu-btn {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0.5rem;
-}
-
 /* Desktop Navigation */
 nav {
   display: flex;
