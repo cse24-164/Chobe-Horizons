@@ -36,19 +36,15 @@ navLinks.forEach(link => {
 document.addEventListener('DOMContentLoaded', function() {
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const nav = document.querySelector('nav');
-  
-  // Create overlay element
   const overlay = document.createElement('div');
   overlay.className = 'overlay';
   document.body.appendChild(overlay);
 
-  // Toggle menu
   mobileMenuBtn.addEventListener('click', function() {
     nav.classList.toggle('active');
     overlay.style.display = nav.classList.contains('active') ? 'block' : 'none';
   });
 
-  // Close menu when clicking overlay
   overlay.addEventListener('click', function() {
     nav.classList.remove('active');
     overlay.style.display = 'none';
