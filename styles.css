@@ -102,31 +102,67 @@ body {
   font-size: 1.2rem;
 }
 
-/* Desktop Navigation */
-nav {
-  display: flex;
-  gap: 1.5rem;
-  margin-left: auto; /* Pushes nav to right */
+/* Mobile Menu Button - UPDATED */
+.mobile-menu-btn {
+  display: none;
+  position: relative;
+  z-index: 1001;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin-left: auto;
+  margin-right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #1f5c3f;
 }
 
-/* Mobile Styles */
+.mobile-close-btn {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #1f5c3f;
+  cursor: pointer;
+}
+
+/* Mobile Styles - UPDATED */
 @media (max-width: 768px) {
   .mobile-menu-btn {
-    display: block; /* Show hamburger */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mobile-close-btn {
+    display: block;
   }
   
   nav {
     position: fixed;
     top: 0;
     left: -100%;
-    width: 70%;
+    width: 85%;
     height: 100vh;
     background: white;
     flex-direction: column;
     padding: 2rem;
+    padding-top: 4rem;
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
     transition: left 0.3s ease;
     z-index: 100;
+  }
+  
+  nav a {
+    padding: 0.8rem 0;
+    font-size: 1rem;
+    border-bottom: 1px solid #eee;
+    margin-left: 0;
   }
   
   nav.active {
@@ -148,7 +184,7 @@ nav {
   nav.active ~ .overlay {
     display: block;
   }
-}
+  
   body {
     font-size: 16px;
     line-height: 1.5;
@@ -163,7 +199,60 @@ nav {
     flex-direction: column;
     padding: 1rem;
   }
+  
+  /* Button size adjustments - NEW */
+  .btn-primary, 
+  .button,
+  .hero button,
+  .hero a.button,
+  .about button,
+  .cta button,
+  .cta a.button,
+  .opportunities a.button.secondary {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.85rem !important;
+    margin: 0.3rem !important;
+  }
 }
+
+/* Extra Small Devices (Galaxy S8 and similar) - UPDATED */
+@media (max-width: 414px) {
+  .mobile-menu-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+  
+  nav {
+    width: 90%;
+  }
+  
+  nav a {
+    padding: 0.7rem 0;
+    font-size: 0.9rem;
+  }
+  
+  /* Make buttons full width on smallest screens */
+  .btn-primary, 
+  .button {
+    display: block;
+    width: 40%;
+    margin: 0.3rem 0 !important;
+  }
+  
+  /* High-DPI Adjustment for S8's 4x pixel ratio */
+  @media 
+    (-webkit-min-device-pixel-ratio: 3.5), 
+    (min-resolution: 420dpi) {
+    body {
+      -webkit-font-smoothing: antialiased;
+    }
+    .btn-primary {
+      border-width: 1.5px;
+    }
+  }
+}
+
 
 
 /* Consolidated Header Styles */
@@ -1117,5 +1206,49 @@ footer a {
   
   .opportunities-image {
     height: 150px;
+  }
+}
+
+/* Extra Small Devices (Galaxy S8 and similar) */
+@media (max-width: 414px) {
+  /* Adjust hamburger menu */
+  .mobile-menu-btn {
+    font-size: 1.4rem; /* Slightly smaller icon */
+    padding: 0.3rem;
+  }
+
+  /* Reduce button sizes further */
+  .btn-primary, 
+  .button,
+  .cta button {
+    padding: 0.4rem 0.8rem !important; /* Compact size */
+    font-size: 0.8rem !important;
+  }
+
+  /* Adjust header padding */
+  header {
+    padding: 0.5rem !important;
+  }
+
+  /* Scale down hero section */
+  .hero, .hero2 {
+    padding: 1rem !important;
+  }
+  .hero h1 {
+    font-size: 1.3rem !important;
+  }
+}
+
+/* High-DPI Adjustment for S8's 4x pixel ratio */
+@media 
+  (max-width: 414px) and 
+  (-webkit-min-device-pixel-ratio: 3.5), 
+  (min-resolution: 420dpi) {
+  /* Sharper text/buttons for S8's dense screen */
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
+  .btn-primary {
+    border-width: 1.5px; /* Thicker borders for clarity */
   }
 }
