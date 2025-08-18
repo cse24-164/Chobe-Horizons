@@ -1,50 +1,257 @@
-/* Add smooth scrolling to the entire page */
+/* RESET AND BASE */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Add transition effects for sections */
+body {
+  color: #000;
+  line-height: 1.6;
+  font-size: 16px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+:root {
+  --mobile: 480px;
+  --tablet: 768px;
+  --desktop: 1024px;
+}
+
+.page-container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* HEADER */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.logo {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  z-index: 1001;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+  margin-left: auto;
+}
+
+nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #000;
+  font-size: 0.9rem;
+  padding-bottom: 0.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  color: #1f5c3f;
+}
+
+nav a.active::after,
+nav a:focus::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #1f5c3f;
+}
+
+nav a.active {
+  font-weight: bold;
+  color: #1f5c3f;
+}
+
+nav a:visited {
+  color: #14442e;
+}
+
+/* MOBILE MENU */
+.mobile-menu-btn {
+  display: none;
+  position: relative;
+  z-index: 1001;
+  width: 44px;
+  height: 44px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1f5c3f;
+}
+
+.mobile-close-btn {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #1f5c3f;
+  cursor: pointer;
+}
+
+/* MOBILE STYLES */
+@media (max-width: 768px) {
+  .header-container {
+    position: relative;
+    justify-content: flex-start;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    padding: 4rem 2rem 2rem;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    transition: left 0.3s ease;
+    z-index: 100;
+  }
+
+  nav.active {
+    left: 0;
+  }
+
+  nav a {
+    padding: 0.8rem 0;
+    font-size: 1rem;
+    border-bottom: 1px solid #eee;
+    margin-left: 0;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 99;
+    display: none;
+  }
+
+  nav.active ~ .overlay {
+    display: block;
+  }
+
+  header {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  /* Adjust button sizes on mobile */
+  .btn-primary,
+  .button,
+  .hero button,
+  .hero a.button,
+  .about button,
+  .cta button,
+  .cta a.button,
+  .opportunities a.button.secondary {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
+    margin: 0.3rem;
+    display: inline-block;
+    width: auto;
+  }
+}
+
+@media (max-width: 414px) {
+  .mobile-menu-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
+  nav {
+    width: 85%;
+  }
+
+  nav a {
+    padding: 0.7rem 0;
+    font-size: 0.9rem;
+  }
+}
+
+/* PAGE TRANSITIONS */
 section {
   transition: all 0.5s ease-in-out;
   opacity: 0;
   transform: translateY(20px);
 }
 
-/* When section comes into view */
 section.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Add transition for cards and other elements */
-.card, .opportunities-card, .project-card, .objectives-card, .stakeholder {
+.card,
+.opportunities-card,
+.project-card,
+.objectives-card,
+.stakeholder {
   transition: all 0.3s ease-in-out;
 }
 
-.card:hover, .opportunities-card:hover, .project-card:hover, 
-.objectives-card:hover, .stakeholder:hover {
+.card:hover,
+.opportunities-card:hover,
+.project-card:hover,
+.objectives-card:hover,
+.stakeholder:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-/* Page transition effects */
-body {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Navigation transitions */
-nav a {
-  transition: all 0.3s ease;
-  position: relative;
 }
 
 nav a:after {
@@ -62,30 +269,12 @@ nav a:hover:after {
   width: 100%;
 }
 
-*{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', Arial, sans-serif;
-}
-
-body {
-  color: #000;
-  line-height: 1.6;
-}
 
 .page-container {
   max-width: 1500px;      
   margin: 0 auto;         /* Centers the page */
   padding-left: 2rem;     
   padding-right: 2rem;    
-}
-
-/* Mobile First Breakpoints */
-:root {
-  --mobile: 480px;
-  --tablet: 768px;
-  --desktop: 1024px;
 }
 
 /* Header Styles */
@@ -101,104 +290,6 @@ body {
   margin-left: 1rem;
   font-size: 1.2rem;
 }
-
-/* Mobile Menu Button - UPDATED */
-.mobile-menu-btn {
-  display: none;
-  position: relative;
-  z-index: 1001;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  margin-left: auto;
-  margin-right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #1f5c3f;
-}
-
-.mobile-close-btn {
-  display: none;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  color: #1f5c3f;
-  cursor: pointer;
-}
-
-/* Mobile Styles - UPDATED */
-@media (max-width: 768px) {
-
-  .header-container {
-    position: relative;
-    justify-content: flex-start;
-  }
-
-  .mobile-menu-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 0;
-    margin-right: auto;
-  }
-  
-  .mobile-close-btn {
-    display: block;
-  }
-
-  .logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  
-  nav {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 60%;
-    height: 100vh;
-    background: white;
-    flex-direction: column;
-    padding: 2rem;
-    padding-top: 4rem;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-    transition: left 0.3s ease;
-    z-index: 100;
-  }
-  
-  nav a {
-    padding: 0.8rem 0;
-    font-size: 1rem;
-    border-bottom: 1px solid #eee;
-    margin-left: 0;
-  }
-  
-  nav.active {
-    left: 0;
-  }
-  
-  /* Add overlay when menu is open */
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 99;
-    display: none;
-  }
-  
-  nav.active ~ .overlay {
-    display: block;
-  }
   
   body {
     font-size: 16px;
@@ -213,51 +304,6 @@ body {
   header {
     flex-direction: column;
     padding: 1rem;
-  }
-  
-  /* Button size adjustments*/
-  .btn-primary,
-  .button,
-  .hero button,
-  .hero a.button,
-  .about button,
-  .cta button,
-  .cta a.button,
-  .opportunities a.button.secondary {
-    padding: 0.5rem 1.2rem;
-    font-size: 0.85rem;
-    margin: 0.3rem;
-    display: inline-block;
-    width: auto;
-  }
-
-}
-
-/* Extra Small Devices*/
-@media (max-width: 414px) {
-  .mobile-menu-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1.3rem;
-  }
-  
-  nav {
-    width: 60%;
-  }
-  
-  nav a {
-    padding: 0.7rem 0;
-    font-size: 0.9rem;
-  }
-  
-  /* Make buttons full width on smallest screens */
-  .btn-primary, 
-  .button {
-    display: block;
-    width: 100%;
-    margin: 0.3rem 0 !important;
-  }
-  
   /* High-DPI Adjustment for S8's 4x pixel ratio */
   @media 
     (-webkit-min-device-pixel-ratio: 3.5), 
