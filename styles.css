@@ -133,15 +133,30 @@ body {
 
 /* Mobile Styles - UPDATED */
 @media (max-width: 768px) {
+
+  .header-container {
+    position: relative;
+    justify-content: flex-start;
+  }
+
   .mobile-menu-btn {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: 0;
+    margin-right: auto;
   }
   
   .mobile-close-btn {
     display: block;
   }
+
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   
   nav {
     position: fixed;
