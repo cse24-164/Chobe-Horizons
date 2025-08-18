@@ -1285,7 +1285,12 @@ footer a {
   /* Reduce button sizes further */
   .btn-primary, 
   .button,
-  .cta button {
+  .hero button,
+  .hero a.button,
+  .about button,
+  .cta button
+  .cta a.button
+  .opportunities a.button.secondary {
     padding: 0.4rem 0.8rem !important; /* Compact size */
     font-size: 0.8rem !important;
   }
