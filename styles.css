@@ -215,7 +215,7 @@ body {
   }
 }
 
-/* Extra Small Devices (Galaxy S8 and similar) - UPDATED */
+/* Extra Small Devices*/
 @media (max-width: 414px) {
   .mobile-menu-btn {
     width: 40px;
@@ -236,7 +236,7 @@ body {
   .btn-primary, 
   .button {
     display: block;
-    width: 40%;
+    width: 100%;
     margin: 0.3rem 0 !important;
   }
   
@@ -278,19 +278,6 @@ header {
   font-size: 1.2rem;
   z-index: 1001; /* Ensures logo stays above mobile menu */
 }
-
-/* Mobile Menu Button */
-.mobile-menu-btn {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #1f5c3f;
-  z-index: 1001;
-  padding: 0.5rem;
-}
-
 /* Desktop Navigation */
 nav {
   display: flex;
