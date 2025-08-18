@@ -1275,50 +1275,84 @@ footer a {
 }
 
 /* Extra Small Devices (Galaxy S8 and similar) */
-@media (max-width: 414px) {
-  /* Adjust hamburger menu */
-  .mobile-menu-btn {
-    font-size: 1.4rem; /* Slightly smaller icon */
-    padding: 0.3rem;
+@media (max-width: 480px) {
+  .page-container {
+    padding: 0 1rem;
   }
 
-  /* Reduce button sizes further */
-  .btn-primary, 
-  .button,
-  .hero button,
-  .hero a.button,
-  .about button,
-  .cta button
-  .cta a.button
-  .opportunities a.button.secondary {
-    padding: 0.4rem 0.8rem !important; /* Compact size */
-    font-size: 0.8rem !important;
+  nav {
+    width: 90%;
   }
 
-  /* Adjust header padding */
-  header {
-    padding: 0.5rem !important;
+  .btn-primary,
+  .button {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
   }
 
-  /* Scale down hero section */
-  .hero, .hero2 {
-    padding: 1rem !important;
-  }
   .hero h1 {
-    font-size: 1.3rem !important;
+    font-size: 1.4rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .hero button,
+  .hero a.button {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
   }
 }
 
-/* High-DPI Adjustment for S8's 4x pixel ratio */
-@media 
-  (max-width: 414px) and 
-  (-webkit-min-device-pixel-ratio: 3.5), 
-  (min-resolution: 420dpi) {
-  /* Sharper text/buttons for S8's dense screen */
-  body {
-    -webkit-font-smoothing: antialiased;
-  }
-  .btn-primary {
-    border-width: 1.5px; /* Thicker borders for clarity */
-  }
+/* PAGE TRANSITIONS */
+section {
+  transition: all 0.6s ease-in-out;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card,
+.opportunities-card,
+.project-card,
+.objectives-card,
+.stakeholder {
+  transition: all 0.4s ease-in-out;
+}
+
+.card:hover,
+.opportunities-card:hover,
+.project-card:hover,
+.objectives-card:hover,
+.stakeholder:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+nav a:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+nav a:hover:after {
+  width: 100%;
 }
